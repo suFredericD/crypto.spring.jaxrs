@@ -10,4 +10,12 @@
 
 #### Ajout des packages model et dao
 
-#### Configuration SLF4J               
+#### Configuration SLF4J    
+
+### Step2 : 
+           
+#### Création du contrôleur UtilisateurController
+
+* liste des utilisateurs
+* findById
+ 

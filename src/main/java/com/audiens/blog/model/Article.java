@@ -32,6 +32,7 @@ public class Article implements Serializable {
 	//bi-directional many-to-one association to Utilisateur
 	@ManyToOne
 	@JoinColumn(name="idauteur")
+	@JsonIgnore
 	private Utilisateur utilisateur;
 
 	//bi-directional many-to-one association to Commentaire

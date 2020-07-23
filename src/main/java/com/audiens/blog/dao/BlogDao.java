@@ -8,6 +8,7 @@ import com.audiens.blog.model.Utilisateur;
 
 public interface BlogDao {
 	// Les utilisateurs
+	public List<Utilisateur> findAllUtilisateur();
 	public Long add(Utilisateur utilisateur);
 	public Utilisateur getUtilisateur(Long id);
 	public Utilisateur getUtilisateur(String email);
@@ -15,9 +16,12 @@ public interface BlogDao {
 	public void del(Utilisateur utilisateur);
 		
 	// Les articles
+	public List<Article> findAllArticle();
 	public Long add(Article article);
+	public Long update(Article article);
 	public Article getArticle(Long id);
 	public List<Article> getArticleByAuthor(Utilisateur utilisateur);
+	public void del(Article article);
 	
 	// Les commentaires
 	public Commentaire add (Commentaire commentaire);

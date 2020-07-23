@@ -29,11 +29,13 @@ public class Commentaire implements Serializable {
 	//bi-directional many-to-one association to Article
 	@ManyToOne
 	@JoinColumn(name="idarticle")
+	@JsonIgnore
 	private Article article;
 
 	//bi-directional many-to-one association to Utilisateur
 	@ManyToOne
 	@JoinColumn(name="idauteur")
+	@JsonIgnore
 	private Utilisateur utilisateur;
 
 	public Commentaire() {

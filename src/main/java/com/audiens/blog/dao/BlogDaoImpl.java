@@ -80,5 +80,27 @@ public class BlogDaoImpl implements BlogDao {
 		return null;
 	}
 
+	@Override
+	public List<Utilisateur> findAllUtilisateur() {
+		return utilisateurRepository.findAll();
+	}
 
+	@Override
+	public List<Article> findAllArticle() {
+		return articleRepository.findAll();
+	}
+
+	@Override
+	public Long update(Article article) {
+		articleRepository.save(article);
+		return article.getId();
+	}
+
+	@Override
+	public void del(Article article) {
+		articleRepository.delete(article);
+	}
+
+
+	
 }
