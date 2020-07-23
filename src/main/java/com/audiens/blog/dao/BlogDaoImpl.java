@@ -25,7 +25,10 @@ public class BlogDaoImpl implements BlogDao {
 	@Override
 	public Utilisateur getUtilisateur(Long id) {
 		Optional<Utilisateur> utilisateur = utilisateurRepository.findById(id);
-		return utilisateur.get();
+		if(utilisateur.isPresent())
+	   	   return utilisateur.get();
+		else
+			return null;
 	}
 
 	@Override

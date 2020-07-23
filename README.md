@@ -17,5 +17,7 @@
 #### Création du contrôleur UtilisateurController
 
 * liste des utilisateurs
-* findById
+* opérations CRUD sur les utilisateurs et les articles.
+* Expression régulière sur les RequestMapping
+
  
