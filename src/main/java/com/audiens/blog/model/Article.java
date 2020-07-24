@@ -3,7 +3,10 @@ package com.audiens.blog.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -25,6 +28,8 @@ public class Article implements Serializable {
 
 	private String contenu;
 
+	@Column(updatable = false)
+	@CreationTimestamp 
 	private Timestamp creele;
 
 	private String titre;
@@ -32,7 +37,7 @@ public class Article implements Serializable {
 	//bi-directional many-to-one association to Utilisateur
 	@ManyToOne
 	@JoinColumn(name="idauteur")
-	@JsonIgnore
+	@JsonIgnoreProperties("articles")
 	private Utilisateur utilisateur;
 
 	//bi-directional many-to-one association to Commentaire

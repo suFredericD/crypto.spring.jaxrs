@@ -18,6 +18,12 @@
 
 * liste des utilisateurs
 * opérations CRUD sur les utilisateurs et les articles.
-* Expression régulière sur les RequestMapping
+* Expression régulière sur les RequestMapping : @RequestMapping(path="/{email:[A-z0-9]+.[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
+
+#### Création du contrôleur ArticleController
+
+* liste des articles
+* opérations CRUD sur les articles.
+
 
  

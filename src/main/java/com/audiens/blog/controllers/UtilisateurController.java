@@ -37,6 +37,7 @@ public class UtilisateurController {
 	//  le premier \  -> caractère escape
 	//             \d -> un caractère numérique  0...9
 	//             +  -> multiplicateur 1 ou n fois ce qu'il y a devant 
+	//@RequestMapping(path="/{id:\\d+}", method = RequestMethod.GET)
 	@RequestMapping(path="/{id:[0-9]+}", method = RequestMethod.GET)
 	public Response findById(@PathVariable("id") String id) {
 		logger.debug("utilisateur.findById:"+id);
@@ -47,9 +48,15 @@ public class UtilisateurController {
 		}
 		return Response.status(200).entity(utilisateur).build();
 	}
-	
-	//@RequestMapping(path="/{email: [A-z]+.[A-z]+@[A-z]+.[A-z]+}", method = RequestMethod.GET)
-	@RequestMapping(path="/{email:[A-z0-9]+.[A-z0-9]+@[A-z0-9]+.[A-z0-9]+}", method = RequestMethod.GET)
+	// [A-z0-9] --> représente un caractère pris dans l'ensemble ABC...YZabc...yz0123...89
+	// +  -> multiplicateur 1 ou n fois ce qu'il y a devant  
+	// aaa11.bb22@ccc33.ddd44 --> correspond !
+	// aaa11.bb22.eee555@ccc33.ddd44 --> ne correspond pas !
+	// aaa11bb22@ccc33.ddd44
+	// ?  --> multiplicateur 0 ou 1
+	@RequestMapping(path="/{email:[A-z0-9]+.[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
+	// {1,3}  --> multiplicateur : 0, 1 ,2 ou 3
+	//@RequestMapping(path="/{email:([A-z0-9]+.){0,3}[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
 	public Response findByEmail(@PathVariable("email") String email) {
 		logger.debug("utilisateur.findByEmail:"+email);
 		Utilisateur utilisateur = blogDao.getUtilisateur(email);
