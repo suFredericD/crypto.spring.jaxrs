@@ -54,9 +54,9 @@ public class UtilisateurController {
 	// aaa11.bb22.eee555@ccc33.ddd44 --> ne correspond pas !
 	// aaa11bb22@ccc33.ddd44
 	// ?  --> multiplicateur 0 ou 1
-	@RequestMapping(path="/{email:[A-z0-9]+.[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
+	//@RequestMapping(path="/{email:[A-z0-9]+.[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
 	// {1,3}  --> multiplicateur : 0, 1 ,2 ou 3
-	//@RequestMapping(path="/{email:([A-z0-9]+.){0,3}[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
+	@RequestMapping(path="/{email:(?:[A-z0-9]+.){0,3}[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
 	public Response findByEmail(@PathVariable("email") String email) {
 		logger.debug("utilisateur.findByEmail:"+email);
 		Utilisateur utilisateur = blogDao.getUtilisateur(email);
