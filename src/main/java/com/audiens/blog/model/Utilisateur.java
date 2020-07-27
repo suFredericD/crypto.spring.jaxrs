@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 import java.sql.Timestamp;
@@ -18,6 +20,7 @@ import java.util.List;
 @NamedQueries({
 	@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u")
 }) 
+
 
 @TableGenerator(name="utilisateur", table="hibernate_sequences",initialValue=0, allocationSize=1)
 public class Utilisateur implements Serializable {

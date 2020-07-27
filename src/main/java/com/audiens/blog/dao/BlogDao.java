@@ -24,8 +24,10 @@ public interface BlogDao {
 	public void del(Article article);
 	
 	// Les commentaires
-	public Commentaire add (Commentaire commentaire);
+	public Long add (Commentaire commentaire);
 	public Long add (Commentaire commentaire, Article article, Utilisateur utilisateur);
 	public List<Commentaire> getCommentaireByArticle(Article article);
+	public Long update(Commentaire commentaire);
+	public void del(Commentaire commentaire);
 	
 }

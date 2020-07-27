@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.List;
 @Entity
 @NamedQuery(name="Article.findAll", query="SELECT a FROM Article a")
 @TableGenerator(name="article", table="hibernate_sequences",initialValue=0, allocationSize=1)
+//@JsonIgnoreProperties({"commentaires","utilisateur"})
+@JsonIgnoreProperties(value={"utilisateur"},allowSetters = true)
 public class Article implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,8 +40,6 @@ public class Article implements Serializable {
 	//bi-directional many-to-one association to Utilisateur
 	@ManyToOne
 	@JoinColumn(name="idauteur")
-	// @JsonIgnore
-	@JsonIgnoreProperties("articles")
 	private Utilisateur utilisateur;
 
 	//bi-directional many-to-one association to Commentaire

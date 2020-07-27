@@ -15,6 +15,7 @@ public class BlogDaoImpl implements BlogDao {
 	
 	@Autowired UtilisateurRepository utilisateurRepository;
 	@Autowired ArticleRepository articleRepository;
+	@Autowired CommentaireRepository commentaireRepository;
 
 	@Override
 	public Long add(Utilisateur utilisateur) {
@@ -66,21 +67,22 @@ public class BlogDaoImpl implements BlogDao {
 	}
 
 	@Override
-	public Commentaire add(Commentaire commentaire) {
-		// TODO Auto-generated method stub
-		return null;
+	public Long add(Commentaire commentaire) {
+		commentaireRepository.save(commentaire);
+		return commentaire.getId();
 	}
 
 	@Override
 	public Long add(Commentaire commentaire, Article article, Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
-		return null;
+		commentaire.setArticle(article);
+		commentaire.setUtilisateur(utilisateur);
+		commentaireRepository.save(commentaire);
+		return commentaire.getId();
 	}
 
 	@Override
 	public List<Commentaire> getCommentaireByArticle(Article article) {
-		// TODO Auto-generated method stub
-		return null;
+		return article.getCommentaires();
 	}
 
 	@Override
@@ -102,6 +104,18 @@ public class BlogDaoImpl implements BlogDao {
 	@Override
 	public void del(Article article) {
 		articleRepository.delete(article);
+	}
+
+	@Override
+	public Long update(Commentaire commentaire) {
+		commentaireRepository.save(commentaire);
+		return commentaire.getId();
+	}
+
+	@Override
+	public void del(Commentaire commentaire) {
+		commentaireRepository.delete(commentaire);
+		
 	}
 
 

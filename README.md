@@ -25,5 +25,13 @@
 * liste des articles
 * opérations CRUD sur les articles.
 
+#### Création du contrôleur CommentaireController
+
+* Ajout d'un commentaire dans un article par un utilisateur
+* Modification des annotations sur les entités  
+ @JsonIgnoreProperties(value={"utilisateur"},allowSetters = true)
+ public class Article implements Serializable
+ 
+ 
 
  
