@@ -24,7 +24,7 @@ public class ConfigApp {
 	@Bean
 	public DataSource dataSource() {
 		DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-		dataSourceBuilder.url("jdbc:postgresql://192.168.1.29:5432/drive");
+		dataSourceBuilder.url("jdbc:postgresql://127.0.0.1:5432/drivephil");
 		dataSourceBuilder.username("driveuser");
 		dataSourceBuilder.password("secret");
 		return dataSourceBuilder.build();

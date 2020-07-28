@@ -5,6 +5,7 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,7 @@ public class CommentaireController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Commentaire
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/commentaire  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.POST)
 	public Response add( @RequestBody Commentaire commentaire) {
 		
@@ -61,6 +63,7 @@ public class CommentaireController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Commentaire
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/commentaire  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.PUT)
 	public Response update( @RequestBody Commentaire commentaire) {
 		
@@ -78,6 +81,7 @@ public class CommentaireController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Commentaire
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/commentaire  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.DELETE)
 	public Response delete( @RequestBody Commentaire commentaire) {
 		

@@ -19,15 +19,13 @@ import java.util.List;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u")
-}) 
-
-
-@TableGenerator(name="utilisateur", table="hibernate_sequences",initialValue=0, allocationSize=1)
+})
+@JsonIgnoreProperties(value={"articles","commentaires"},allowSetters = true)
 public class Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE, generator="utilisateur")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	private Timestamp creele;

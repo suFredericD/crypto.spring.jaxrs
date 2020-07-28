@@ -17,13 +17,12 @@ import java.sql.Timestamp;
  */
 @Entity
 @NamedQuery(name="Commentaire.findAll", query="SELECT c FROM Commentaire c")
-@TableGenerator(name="commentaire", table="hibernate_sequences",initialValue=0, allocationSize=1)
 @JsonIgnoreProperties(value={"article","utilisateur"},allowSetters = true)
 public class Commentaire implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE, generator="commentaire")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	private String contenu;

@@ -5,6 +5,7 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.audiens.blog.dao.BlogDao;
 import com.audiens.blog.model.Utilisateur;
-
 
 @RestController
 // Ressource principale
@@ -27,6 +27,7 @@ public class UtilisateurController {
 	
 	// Sous ressource
 	// L'url qui amène à cette classe <contextApplcation>/utilisateurs
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.GET)
 	public Response index() {
 		logger.debug("utilisateur.index:");
@@ -38,6 +39,7 @@ public class UtilisateurController {
 	//             \d -> un caractère numérique  0...9
 	//             +  -> multiplicateur 1 ou n fois ce qu'il y a devant 
 	//@RequestMapping(path="/{id:\\d+}", method = RequestMethod.GET)
+	@CrossOrigin
 	@RequestMapping(path="/{id:[0-9]+}", method = RequestMethod.GET)
 	public Response findById(@PathVariable("id") String id) {
 		logger.debug("utilisateur.findById:"+id);
@@ -56,6 +58,7 @@ public class UtilisateurController {
 	// ?  --> multiplicateur 0 ou 1
 	//@RequestMapping(path="/{email:[A-z0-9]+.[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
 	// {1,3}  --> multiplicateur : 0, 1 ,2 ou 3
+	@CrossOrigin
 	@RequestMapping(path="/{email:(?:[A-z0-9]+.){0,3}[A-z0-9]+@[A-z0-9]+.[A-z0-9]{2,6}}", method = RequestMethod.GET)
 	public Response findByEmail(@PathVariable("email") String email) {
 		logger.debug("utilisateur.findByEmail:"+email);
@@ -70,6 +73,7 @@ public class UtilisateurController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Utilisateur
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.POST)
 	public Response add( @RequestBody Utilisateur utilisateur) {
 		
@@ -87,6 +91,7 @@ public class UtilisateurController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Utilisateur
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.PUT)
 	public Response update( @RequestBody Utilisateur utilisateur) {
 		
@@ -104,6 +109,7 @@ public class UtilisateurController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Utilisateur
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.DELETE)
 	public Response delete( @RequestBody Utilisateur utilisateur) {
 		

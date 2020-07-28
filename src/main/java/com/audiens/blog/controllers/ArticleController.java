@@ -5,6 +5,7 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +28,13 @@ public class ArticleController {
 	
 	// Sous ressource
 	// L'url qui amène à cette classe <contextApplcation>/articles
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.GET)
 	public Response index() {
 		return Response.status(200).entity(blogDao.findAllArticle()).build();
 	}
 	
+	@CrossOrigin
 	@RequestMapping(path="/{id}", method = RequestMethod.GET)
 	public Response findById(@PathVariable("id") String id) {
 		Article article = blogDao.getArticle(Long.valueOf(id));
@@ -44,6 +47,7 @@ public class ArticleController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Article
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/article  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.POST)
 	public Response add( @RequestBody Article article) {
 		
@@ -61,6 +65,7 @@ public class ArticleController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Article
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/article  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.PUT)
 	public Response update( @RequestBody Article article) {
 		
@@ -78,6 +83,7 @@ public class ArticleController {
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Article
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/article  avec la méthode POST.
+	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.DELETE)
 	public Response delete( @RequestBody Article article) {
 		

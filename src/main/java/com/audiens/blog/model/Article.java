@@ -2,16 +2,10 @@ package com.audiens.blog.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import org.hibernate.annotations.CreationTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.sql.Timestamp;
 import java.util.List;
-
 
 /**
  * The persistent class for the article database table.
@@ -19,14 +13,12 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Article.findAll", query="SELECT a FROM Article a")
-@TableGenerator(name="article", table="hibernate_sequences",initialValue=0, allocationSize=1)
-//@JsonIgnoreProperties({"commentaires","utilisateur"})
 @JsonIgnoreProperties(value={"utilisateur"},allowSetters = true)
 public class Article implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id        
-    @GeneratedValue(strategy=GenerationType.TABLE, generator="article") 
+    @GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private Long id;
 
 	private String contenu;
