@@ -17,6 +17,7 @@ public interface BlogDao {
 		
 	// Les articles
 	public List<Article> findAllArticle();
+	public List<Article> lastArticle(Long nombre);
 	public Long add(Article article);
 	public Long update(Article article);
 	public Article getArticle(Long id);

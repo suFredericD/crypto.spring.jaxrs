@@ -18,6 +18,7 @@ import com.audiens.blog.model.Utilisateur;
 @RestController
 // Ressource principale
 // L'url qui amène à cette classe <contextApplcation>/utilisateur.....
+@CrossOrigin
 @RequestMapping(path={"/utilisateur","/utilisateurs"})
 public class UtilisateurController {
 	private static final Logger logger = LoggerFactory.getLogger(UtilisateurController.class);

@@ -1,5 +1,7 @@
 package com.audiens.blog.controllers;
 
+import java.util.List;
+
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
@@ -43,6 +45,17 @@ public class ArticleController {
 			return Response.status(404).build();
 		}
 		return Response.status(200).entity(article).build();
+	}
+
+	@CrossOrigin
+	@RequestMapping(path="/last/{nombre}", method = RequestMethod.GET)
+	public Response last(@PathVariable("nombre") String nombre) {
+		List<Article> articles = blogDao.lastArticle(Long.valueOf(nombre));
+		if (articles == null) {
+			// Si la couche dao retourne un objet vide, on retourne un code 404 = non trouvé
+			return Response.status(404).build();
+		}
+		return Response.status(200).entity(articles).build();
 	}
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Article

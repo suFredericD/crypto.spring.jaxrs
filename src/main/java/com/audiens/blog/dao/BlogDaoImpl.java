@@ -67,6 +67,17 @@ public class BlogDaoImpl implements BlogDao {
 	}
 
 	@Override
+	public List<Article> lastArticle(Long nombre) {
+		List<Article> articles = articleRepository.findAllByOrderByCreeleDesc();
+		if(articles.size() <= nombre)
+		  return articles;
+		else {
+			List<Article> liste = articles.subList(0,nombre.intValue());
+			return liste;
+		}
+	}
+	
+	@Override
 	public Long add(Commentaire commentaire) {
 		commentaireRepository.save(commentaire);
 		return commentaire.getId();
