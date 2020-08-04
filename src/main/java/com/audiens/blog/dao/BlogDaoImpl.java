@@ -50,6 +50,7 @@ public class BlogDaoImpl implements BlogDao {
 
 	@Override
 	public Long add(Article article) {
+		System.out.println("User : " + article.getUtilisateur());
 		articleRepository.save(article);
 		return article.getId();
 	}

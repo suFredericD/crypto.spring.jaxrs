@@ -64,7 +64,7 @@ public class ArticleController {
 	@RequestMapping(path="", method = RequestMethod.POST)
 	public Response add( @RequestBody Article article) {
 		
-		logger.debug("article.add:"+article.toString());
+		logger.debug("article.add:" + article.toString());
 		String message="";
 		try {
 		  Long newid = blogDao.add(article);
