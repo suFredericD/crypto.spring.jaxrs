@@ -1,5 +1,7 @@
 package com.audiens.blog.controllers;
 
+import java.sql.Timestamp;
+
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
@@ -78,7 +80,9 @@ public class UtilisateurController {
 	@RequestMapping(path="", method = RequestMethod.POST)
 	public Response add( @RequestBody Utilisateur utilisateur) {
 		
-		logger.debug("utilisateur.add:"+utilisateur.toString());
+		Timestamp tmp = new Timestamp(System.currentTimeMillis());
+		utilisateur.setCreele(tmp);
+		logger.debug("utilisateur.add:" + utilisateur.toString());
 		String message="";
 		try {
 		  Long newid = blogDao.add(utilisateur);
