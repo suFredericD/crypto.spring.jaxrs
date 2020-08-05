@@ -16,9 +16,9 @@ import com.audiens.blog.dao.BlogDao;
 import com.audiens.blog.model.Utilisateur;
 
 @RestController
-// Ressource principale
-// L'url qui amène à cette classe <contextApplcation>/utilisateur.....
 @CrossOrigin
+//Ressource principale
+//L'url qui amène à cette classe <contextApplcation>/utilisateur.....
 @RequestMapping(path={"/utilisateur","/utilisateurs"})
 public class UtilisateurController {
 	private static final Logger logger = LoggerFactory.getLogger(UtilisateurController.class);
@@ -91,12 +91,12 @@ public class UtilisateurController {
 	}
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Utilisateur
-	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode POST.
+	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode PUT.
 	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.PUT)
 	public Response update( @RequestBody Utilisateur utilisateur) {
 		
-		logger.debug("utilisateur.update:"+utilisateur.toString());
+		logger.debug("utilisateur.update:" + utilisateur.toString());
 		String message="";
 		try {
 		  blogDao.update(utilisateur);
@@ -109,12 +109,12 @@ public class UtilisateurController {
 	}
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Utilisateur
-	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode POST.
+	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode DELETE.
 	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.DELETE)
 	public Response delete( @RequestBody Utilisateur utilisateur) {
 		
-		logger.debug("utilisateur.update:"+utilisateur.toString());
+		logger.debug("utilisateur.delete:" + utilisateur.toString());
 		String message="";
 		try {
 		  blogDao.del(utilisateur);

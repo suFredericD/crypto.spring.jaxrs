@@ -44,8 +44,9 @@ public class BlogDaoImpl implements BlogDao {
 	}
 
 	@Override
-	public void del(Utilisateur utilisateur) {
+	public Long del(Utilisateur utilisateur) {
 		utilisateurRepository.delete(utilisateur);
+		return utilisateur.getId();
 	}
 
 	@Override

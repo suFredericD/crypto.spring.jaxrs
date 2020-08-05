@@ -13,7 +13,7 @@ public interface BlogDao {
 	public Utilisateur getUtilisateur(Long id);
 	public Utilisateur getUtilisateur(String email);
 	public Long update(Utilisateur utilisateur);
-	public void del(Utilisateur utilisateur);
+	public Long del(Utilisateur utilisateur);
 		
 	// Les articles
 	public List<Article> findAllArticle();
