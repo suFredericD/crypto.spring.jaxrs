@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.audiens.blog.dao.BlogDao;
 import com.audiens.blog.model.Article;
+import com.audiens.blog.model.Utilisateur;
 
 
 @RestController

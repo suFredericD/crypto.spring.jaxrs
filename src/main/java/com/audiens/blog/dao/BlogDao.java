@@ -12,6 +12,7 @@ public interface BlogDao {
 	public Long add(Utilisateur utilisateur);
 	public Utilisateur getUtilisateur(Long id);
 	public Utilisateur getUtilisateur(String email);
+	public Utilisateur getUtilisateur(String login, String password);
 	public Long update(Utilisateur utilisateur);
 	public Long del(Utilisateur utilisateur);
 		
@@ -21,6 +22,7 @@ public interface BlogDao {
 	public Long add(Article article);
 	public Long update(Article article);
 	public Article getArticle(Long id);
+	public Utilisateur getUtilisateur(Article article);
 	public List<Article> getArticleByAuthor(Utilisateur utilisateur);
 	public void del(Article article);
 	

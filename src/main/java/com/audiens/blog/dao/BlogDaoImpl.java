@@ -36,7 +36,26 @@ public class BlogDaoImpl implements BlogDao {
 	public Utilisateur getUtilisateur(String email) {
 		return utilisateurRepository.findByEmail(email);
 	}
-
+	
+	@Override
+	public Utilisateur getUtilisateur(String login, String password) {
+		Utilisateur send = utilisateurRepository.findByEmail(login);
+		if(send.getMdp().equals(password)) {
+			return utilisateurRepository.findByEmail(login);
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public Utilisateur getUtilisateur(Article article) {
+		Optional<Utilisateur> optional= utilisateurRepository.findById(article.getUtilisateur().getId());
+		if(optional.isPresent())
+			return optional.get();
+		else
+			return null;
+	}
+		
 	@Override
 	public Long update(Utilisateur utilisateur) {
 		utilisateurRepository.save(utilisateur);
@@ -61,7 +80,7 @@ public class BlogDaoImpl implements BlogDao {
 		Optional<Article> article = articleRepository.findById(id);
 		return article.get();
 	}
-
+	
 	@Override
 	public List<Article> getArticleByAuthor(Utilisateur utilisateur) {
 		List<Article> articles = articleRepository.findByUtilisateur(utilisateur);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.audiens.blog.dao.BlogDao;
+import com.audiens.blog.model.Article;
 import com.audiens.blog.model.Utilisateur;
 
 @RestController
@@ -72,7 +73,18 @@ public class UtilisateurController {
 		}
 		return Response.status(200).entity(utilisateur).build();
 	}
-
+	
+	@CrossOrigin
+	@RequestMapping(path="/byarticle/{idarticle}", method = RequestMethod.GET)
+	public Response findByArticle(@PathVariable("idarticle") String idarticle) {
+		Article article = blogDao.getArticle(Long.valueOf(idarticle));
+		Utilisateur utilisateur = blogDao.getUtilisateur(article);
+		if (utilisateur == null) {
+			// Si la couche dao retourne un objet vide, on retourne un code 404 = non trouvé
+			return Response.status(404).build();
+		}
+		return Response.status(200).entity(utilisateur).build();
+	}
 	
 	// l'annotation @RequestBody permet d'injecter le body de la requete dans l'objet Utilisateur
 	// Le mapping correspond à l'url http://localhost:8080/blog.spring.jaxrs/utilisateur  avec la méthode POST.
