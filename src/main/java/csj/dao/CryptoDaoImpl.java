@@ -15,10 +15,16 @@ public class CryptoDaoImpl implements CryptoDao {
 
 	@Override
 	public List<People> findAllPeople() {
-		
 		return peopleRep.findAll();
 	}
 
-
+	@Override
+	public People getPeople(Long id) {
+		Optional<People> people = peopleRep.findById(id);
+		if(people.isPresent())
+	   	   return people.get();
+		else
+			return null;
+	}
 
 }

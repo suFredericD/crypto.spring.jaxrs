@@ -7,7 +7,7 @@ import csj.model.*;
 public interface CryptoDao {
 	// Les pesonnes
 	public List<People> findAllPeople();
-
+	public People getPeople(Long id);
 	
 	
 	

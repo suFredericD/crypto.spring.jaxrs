@@ -37,22 +37,17 @@ public class PeopleController {
 		return Response.status(200).entity(cryptoDao.findAllPeople()).build();
 	}
 	
-	
-	//  le premier \  -> caractère escape
-	//             \d -> un caractère numérique  0...9
-	//             +  -> multiplicateur 1 ou n fois ce qu'il y a devant 
-	//@RequestMapping(path="/{id:\\d+}", method = RequestMethod.GET)
-//	@CrossOrigin
-//	@RequestMapping(path="/{id:[0-9]+}", method = RequestMethod.GET)
-//	public Response findById(@PathVariable("id") String id) {
-//		logger.debug("utilisateur.findById:"+id);
-//		People utilisateur = cryptoDao.getPeople(Long.valueOf(id));
-//		if (utilisateur == null) {
-//			// Si la couche dao retourne un objet vide, on retourne un code 404 = non trouvé
-//			return Response.status(404).build();
-//		}
-//		return Response.status(200).entity(utilisateur).build();
-//	}
+	@CrossOrigin
+	@RequestMapping(path="/{id:[0-9]+}", method = RequestMethod.GET)
+	public Response findById(@PathVariable("id") String id) {
+		logger.debug("utilisateur.findById:"+id);
+		People people = cryptoDao.getPeople(Long.valueOf(id));
+		if (people == null) {
+			// Si la couche dao retourne un objet vide, on retourne un code 404 = non trouvé
+			return Response.status(404).build();
+		}
+		return Response.status(200).entity(people).build();
+	}
 
 	
 }
