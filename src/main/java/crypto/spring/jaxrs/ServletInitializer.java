@@ -1,4 +1,4 @@
-package com.audiens.blog.spring.jaxrs;
+package crypto.spring.jaxrs;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

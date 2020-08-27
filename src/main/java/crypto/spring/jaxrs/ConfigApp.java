@@ -1,4 +1,4 @@
-package com.audiens.blog.spring.jaxrs;
+package crypto.spring.jaxrs;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -11,8 +11,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.audiens.blog.dao.BlogDao;
-import com.audiens.blog.dao.BlogDaoImpl;
+import csj.dao.CryptoDao;
+import csj.dao.CryptoDaoImpl;
 
 @Configuration
 public class ConfigApp {
@@ -24,9 +24,9 @@ public class ConfigApp {
 	@Bean
 	public DataSource dataSource() {
 		DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-		dataSourceBuilder.url("jdbc:postgresql://127.0.0.1:5432/drivephil");
-		dataSourceBuilder.username("driveuser");
-		dataSourceBuilder.password("secret");
+		dataSourceBuilder.url("jdbc:postgresql://localhost:5432/cryptobdd");
+		dataSourceBuilder.username("cryptomaster");
+		dataSourceBuilder.password("jordan23");
 		return dataSourceBuilder.build();
 	}
 
@@ -55,7 +55,7 @@ public class ConfigApp {
 		// Définit s'il faut analyser le ClassPath standard des fichiers jar contenant des marqueurs de persistence.xml. 
 		// En cas de ressort analyse, aucun persistence.xml n'est nécessaire; 
 		// il vous suffit de spécifier les packages de base à rechercher dans le paramètre.
-		factory.setPackagesToScan("com.audiens.blog.model");
+		factory.setPackagesToScan("csj.model");
 		factory.setDataSource(dataSource());
 		factory.afterPropertiesSet();
 
@@ -74,8 +74,8 @@ public class ConfigApp {
 		return txManager;
 	} 
 	
-	@Bean BlogDao blogDao() {
-		return new BlogDaoImpl();
+	@Bean CryptoDao cryptoDao() {
+		return new CryptoDaoImpl();
 	}
 	
 }

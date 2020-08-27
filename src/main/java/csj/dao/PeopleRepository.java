@@ -1,11 +1,11 @@
-package com.audiens.blog.dao;
+package csj.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.audiens.blog.model.Utilisateur;
+import csj.model.People;
 
 @Repository
-public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
-    Utilisateur findByEmail(String email);
+public interface PeopleRepository extends JpaRepository<People, Long> {
+	
 }

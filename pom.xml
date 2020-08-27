@@ -8,12 +8,12 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.audiens</groupId>
-	<artifactId>blog.spring.jaxrs</artifactId>
-	<version>0.0.5</version>
+	<groupId>emtza</groupId>
+	<artifactId>crypto.spring.jaxrs</artifactId>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
-	<name>blog.spring.jaxrs</name>
-	<description>Blog JAXRS avec spring et jersey</description>
+	<name>crypto.spring.jaxrs</name>
+	<description>Crypto JAXRS avec spring et jersey</description>
 
 	<properties>
 		<java.version>1.8</java.version>
