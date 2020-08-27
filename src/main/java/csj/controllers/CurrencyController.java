@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import csj.dao.*;
-import csj.model.People;
+import csj.model.Currency;
 
 @RestController
 @CrossOrigin
 //Ressource principale
 //L'url qui amène à cette classe <contextApplcation>/utilisateur.....
-@RequestMapping(path={"/people"})
-public class PeopleController {
+@RequestMapping(path={"/currency"})
+public class CurrencyController {
 	
 	// On injecte le Bean BlogDao
 	@Autowired CryptoDao cryptoDao;
@@ -28,18 +28,18 @@ public class PeopleController {
 	@CrossOrigin
 	@RequestMapping(path="", method = RequestMethod.GET)
 	public Response index() {
-		return Response.status(200).entity(cryptoDao.findAllPeople()).build();
+		return Response.status(200).entity(cryptoDao.findAllCurrencies()).build();
 	}
 	
 	@CrossOrigin
 	@RequestMapping(path="/{id:[0-9]+}", method = RequestMethod.GET)
 	public Response findById(@PathVariable("id") String id) {
-		People people = cryptoDao.getPeople(Long.valueOf(id));
-		if (people == null) {
+		Currency currency = cryptoDao.getCurrency(Long.valueOf(id));
+		if (currency == null) {
 			// Si la couche dao retourne un objet vide, on retourne un code 404 = non trouvé
 			return Response.status(404).build();
 		}
-		return Response.status(200).entity(people).build();
+		return Response.status(200).entity(currency).build();
 	}
 
 	

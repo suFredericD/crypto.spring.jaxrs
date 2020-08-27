@@ -20,7 +20,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 		logger.debug("== == APPLICATION START == ==");
 		System.out.println("== == APPLICATION START == ==");
-		
+
 		
 		
 		logger.debug("== == APPLICATION END == ==");

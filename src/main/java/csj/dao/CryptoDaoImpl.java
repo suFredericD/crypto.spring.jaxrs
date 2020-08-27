@@ -12,7 +12,11 @@ import csj.model.*;
 public class CryptoDaoImpl implements CryptoDao {
 	
 	@Autowired PeopleRepository peopleRep;
+	@Autowired CurrencyRepository currencyRep;
 
+// ---------------------------------------------------------------------------------------
+//		LES PERSONNES
+// ---------------------------------------------------------------------------------------	
 	@Override
 	public List<People> findAllPeople() {
 		return peopleRep.findAll();
@@ -27,4 +31,20 @@ public class CryptoDaoImpl implements CryptoDao {
 			return null;
 	}
 
+// ---------------------------------------------------------------------------------------
+//	LES MONNAIES
+//---------------------------------------------------------------------------------------
+	@Override
+	public List<Currency> findAllCurrencies() {
+		return currencyRep.findAll();
+	}
+
+	@Override
+	public Currency getCurrency(Long id) {
+		Optional<Currency> currency = currencyRep.findById(id);
+		if(currency.isPresent())
+	   	   return currency.get();
+		else
+			return null;
+	}
 }

@@ -2,6 +2,9 @@ package csj.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -12,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name="currency_type")
 @NamedQuery(name="CurrencyType.findAll", query="SELECT c FROM CurrencyType c")
+@JsonIgnoreProperties(value={"currencies"},allowSetters = true)
 public class CurrencyType implements Serializable {
 	private static final long serialVersionUID = 1L;
 

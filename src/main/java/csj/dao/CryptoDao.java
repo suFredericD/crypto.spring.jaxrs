@@ -5,12 +5,13 @@ import java.util.List;
 import csj.model.*;
 
 public interface CryptoDao {
-	// Les pesonnes
+	// Les personnes
 	public List<People> findAllPeople();
 	public People getPeople(Long id);
 	
-	
-	
+	// Les monnaies
+	public List<Currency> findAllCurrencies();
+	public Currency getCurrency(Long id);
 	
 	
 	//	public Long add(Utilisateur utilisateur);
