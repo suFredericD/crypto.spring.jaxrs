@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import csj.dao.*;
 import csj.model.Currency;
 
@@ -32,6 +33,17 @@ public class CurrencyController {
 	}
 	
 	@CrossOrigin
+	@RequestMapping(path="/type/{id:[0-9]+}", method = RequestMethod.GET)
+	public Response findByType(@PathVariable("id") String id) {
+		List<Currency> currencies = cryptoDao.getCurrenciesByType(Long.valueOf(id));
+		if (currencies == null) {
+			// Si la couche dao retourne un objet vide, on retourne un code 404 = non trouvé
+			return Response.status(404).build();
+		}
+		return Response.status(200).entity(currencies).build();
+	}
+	
+	@CrossOrigin
 	@RequestMapping(path="/{id:[0-9]+}", method = RequestMethod.GET)
 	public Response findById(@PathVariable("id") String id) {
 		Currency currency = cryptoDao.getCurrency(Long.valueOf(id));
@@ -41,6 +53,7 @@ public class CurrencyController {
 		}
 		return Response.status(200).entity(currency).build();
 	}
+
 
 	
 }

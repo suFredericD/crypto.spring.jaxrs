@@ -12,7 +12,10 @@ public interface CryptoDao {
 	// Les monnaies
 	public List<Currency> findAllCurrencies();
 	public Currency getCurrency(Long id);
+	public List<Currency> getCurrenciesByType(Long id);
 	
+	// Les types de monnaies
+	public CurrencyType getCurrencyType(Long id);
 	
 	//	public Long add(Utilisateur utilisateur);
 //	public Utilisateur getUtilisateur(Long id);

@@ -13,6 +13,7 @@ public class CryptoDaoImpl implements CryptoDao {
 	
 	@Autowired PeopleRepository peopleRep;
 	@Autowired CurrencyRepository currencyRep;
+	@Autowired CurrencyTypeRepository currencyTypeRep;
 
 // ---------------------------------------------------------------------------------------
 //		LES PERSONNES
@@ -44,6 +45,24 @@ public class CryptoDaoImpl implements CryptoDao {
 		Optional<Currency> currency = currencyRep.findById(id);
 		if(currency.isPresent())
 	   	   return currency.get();
+		else
+			return null;
+	}
+	
+	@Override
+	public List<Currency> getCurrenciesByType(Long id) {
+		Optional<CurrencyType> currencyType = currencyTypeRep.findById(Integer.valueOf(id.toString()));
+		return currencyRep.findByCurrencyType(currencyType);
+		
+	}
+
+// ---------------------------------------------------------------------------------------
+//		LES TYPES DE MONNAIES
+//---------------------------------------------------------------------------------------
+	public CurrencyType getCurrencyType(Long id) {
+		Optional<CurrencyType> currencyType = currencyTypeRep.findById(Integer.valueOf(id.toString()));
+		if(currencyType.isPresent())
+	   	   return currencyType.get();
 		else
 			return null;
 	}
